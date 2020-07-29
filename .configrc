@@ -1,0 +1,19 @@
+{
+  "define": {
+    "__DEV__": false,
+    "__ISSUE__": ""
+  },
+  "extensions": [
+    ".tsx",
+    ".ts",
+    ".js",
+    ".json"
+  ],
+  "bundles": [
+    {
+      "entry": ".",
+      "external": ["axios", "qs", "path-to-regexp"]
+    }
+  ],
+  "output": "dist"
+}
