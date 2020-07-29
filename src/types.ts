@@ -24,3 +24,11 @@ export interface Server {
 }
 
 export type TApi<T> = { [key in keyof T]: string | ServiceConfiguration }
+
+export interface CreateApiProp<T> extends Server {
+  modules: TApi<T>
+}
+
+export type CreateApiResponse<T> = {
+  [k in keyof T]: <Y = unknown>(data: RequestData) => Promise<Y>
+}

@@ -1,4 +1,5 @@
 import { ServiceConfiguration } from './types'
+import { AxiosRequestConfig, AxiosResponse, AxiosPromise } from 'axios'
 
 const SUPPORT_METHODS = ['get', 'post', 'put', 'delete', 'patch', 'head', 'options', 'link', 'unlink']
 
@@ -27,3 +28,15 @@ export const parseURL = (withUrl: string): ServiceConfiguration => {
 export const isString = (type: unknown): type is string => typeof type === 'string'
 
 export const isEmpty = (type: unknown) => typeof type === 'object' && !!Reflect.ownKeys(type).length
+
+export function mockResponse<T>(input: AxiosRequestConfig, data?: T, output?: AxiosResponse): AxiosPromise<T> {
+  return Promise.resolve({
+    status: 200,
+    statusText: 'ok',
+    request: input,
+    config: input,
+    headers: {},
+    data,
+    ...output,
+  })
+}
